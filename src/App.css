@@ -1,0 +1,157 @@
+:root {
+  --bg-color: #000000;
+
+  --btn-num: #3b3b3d;
+  --btn-num-active: #5f5f61;
+
+  --btn-action: #d7d7d9;
+  --btn-action-active: #eeeeef;
+
+  --btn-op: #ff9f0a;
+  --btn-op-active: #f7c166;
+
+  --text-light: #ffffff;
+  --text-dark: #000000;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  overflow: hidden;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  background: var(--bg-color);
+}
+
+.calculator {
+  width: 100%;
+  height: 100%;
+  padding: 18px 18px 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 18px;
+}
+
+.display {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  min-height: 150px;
+  padding: 0 8px;
+}
+
+.previous {
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.6);
+  min-height: 24px;
+  font-weight: 300;
+}
+
+.current {
+  font-size: clamp(4rem, 18vw, 5.5rem);
+  font-weight: 300;
+  line-height: 1.1;
+  overflow-x: auto;
+  white-space: nowrap;
+  max-width: 100%;
+  scrollbar-width: none; /* Firefox */
+}
+
+.current::-webkit-scrollbar {
+  display: none; /* Safari/Chrome */
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.btn {
+  border: none;
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  font-size: 2.2rem;
+  font-weight: 400;
+  cursor: pointer;
+  background: var(--btn-num);
+  color: var(--text-light);
+  transition: background-color 0.1s ease-out, transform 0.1s ease-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.btn:active {
+  background: var(--btn-num-active);
+  transform: scale(0.97);
+}
+
+.btn-action {
+  background: var(--btn-action);
+  color: var(--text-dark);
+  font-size: clamp(1.5rem, 6vw, 1.85rem);
+  font-weight: 500;
+}
+
+.btn-action:active {
+  background: var(--btn-action-active);
+}
+
+.btn-operator, .btn-equal {
+  background: var(--btn-op);
+  color: var(--text-light);
+  font-size: 2.5rem;
+  font-weight: 400;
+}
+
+.btn-operator:active, .btn-equal:active {
+  background: var(--btn-op-active);
+}
+
+.btn-zero {
+  grid-column: span 2;
+  aspect-ratio: auto;
+  border-radius: 9999px;
+  justify-content: flex-start;
+  padding-left: 30px;
+}
+
+@media (min-height: 720px) {
+  .calculator {
+    padding-bottom: 28px;
+    gap: 22px;
+  }
+
+  .display {
+    min-height: 190px;
+  }
+}
